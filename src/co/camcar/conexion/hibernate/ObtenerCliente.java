@@ -15,12 +15,17 @@ public class ObtenerCliente {
 		try {
 			session.beginTransaction();
 			//Obtener detalles cliente
-			DetallesCliente detallesCliente = session.get(DetallesCliente.class, 1);
+			DetallesCliente detallesCliente = session.get(DetallesCliente.class, 4);
 			System.out.println(detallesCliente);
 			System.out.println(detallesCliente.getCliente());
+			//borrar en cascada
+			System.out.println("Ahora vamos a eliminar en cascada");
+			session.delete(detallesCliente);
 			session.getTransaction().commit();
-			session.close();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}finally {
+			session.close();
 			sessionFactory.close();
 		}
 
