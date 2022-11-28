@@ -1,5 +1,8 @@
 package co.camcar.conexion.hibernate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -27,6 +31,8 @@ public class Cliente {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id")
 	private DetallesCliente detallesCliente;
+	@OneToMany(mappedBy = "cliente_id", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+	private List<Pedido> pedidos;
 	
 	public Cliente() {
 	}
@@ -75,6 +81,14 @@ public class Cliente {
 
 	public void setDetallesCliente(DetallesCliente detallesCliente) {
 		this.detallesCliente = detallesCliente;
+	}
+	
+	public void aggregarPedido(Pedido pedido) {
+		if(this.pedidos == null) {
+			this.pedidos = new ArrayList<>();
+		}
+		this.pedidos.add(pedido);
+		pedido.setCliente(this);
 	}
 
 	@Override
