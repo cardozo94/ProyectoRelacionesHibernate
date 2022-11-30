@@ -1,6 +1,6 @@
 package co.camcar.conexion.hibernate;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,14 +21,17 @@ public class Pedido {
 	@Column(name = "id")
 	private int id;
 	@Column(name = "fecha")
-	private Date fecha;
+	private GregorianCalendar fecha;
 	@Column(name = "forma_pago")
 	private String formaPago;
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
+	public Pedido() {
+	}
 
-	public Pedido(Date fecha) {
+	public Pedido(GregorianCalendar fecha) {
 		this.fecha = fecha;
 	}
 
@@ -40,11 +43,11 @@ public class Pedido {
 		this.id = id;
 	}
 
-	public Date getFecha() {
+	public GregorianCalendar getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(GregorianCalendar fecha) {
 		this.fecha = fecha;
 	}
 

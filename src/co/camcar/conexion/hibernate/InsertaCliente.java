@@ -10,13 +10,14 @@ public class InsertaCliente {
 		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Cliente.class)
 				.addAnnotatedClass(DetallesCliente.class)
+				.addAnnotatedClass(Pedido.class)
 				.buildSessionFactory();
 		
 		Session session = sessionFactory.openSession();
 		
 		try {
-			Cliente cliente = new Cliente("Francisco", "Cardozo", "Calle 19");
-			DetallesCliente detallesCliente = new DetallesCliente("wwww.francisco.co", "9876543210", "Segundo cliente");
+			Cliente cliente = new Cliente("Lorena", "Cardozo", "Calle 54");
+			DetallesCliente detallesCliente = new DetallesCliente("wwww.lorena.co", "123456789", "tercer cliente");
 			//asociar los objetos
 			cliente.setDetallesCliente(detallesCliente);
 			session.beginTransaction();

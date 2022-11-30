@@ -58,13 +58,12 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getApellidos() {
+	public String getApellido() {
 		return apellido;
 	}
 
-	public void setApellidos(String apellidos) {
-		this.apellido = apellidos;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getDireccion() {
@@ -89,6 +88,10 @@ public class Cliente {
 		}
 		this.pedidos.add(pedido);
 		pedido.setCliente(this);
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
 	@Override
