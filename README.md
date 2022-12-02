@@ -1,6 +1,6 @@
 # Proyecto Relaciones Hibernate
 
-This is a project that I create following the tutorial on youtube [Curso Spring][def]. In this project I see how implement tables relations with hibernate and do CRUD operations.
+This is a project that I create following the tutorial on youtube [Curso Spring][def]. In this project I see how implement tables relations with hibernate and do CRUD operations. It's running over Java 11.0.15.1.
 
 One To One Relation (one way and bidirectional)
 
